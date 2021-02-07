@@ -40,6 +40,7 @@ class _SearchScreenState extends State<SearchScreen> {
   /// create chatroom, send user to conversation screen , push replacement
   createChatroomAndStartConversation({String userName}){
     if(userName != Constants.myName){
+      print(Constants.myName);
       String chatRoomId = getChatRoomId(userName, Constants.myName);
       List<String> users = [userName, Constants.myName];
       Map<String, dynamic> chatRoomMap = {
@@ -73,6 +74,7 @@ class _SearchScreenState extends State<SearchScreen> {
           Spacer(),
           GestureDetector(
               onTap: (){
+                print("hello");
                 createChatroomAndStartConversation(
                     userName: userName
                 );
