@@ -23,10 +23,12 @@ class _ChatRoomState extends State<ChatRoom> {
         return snapshot.hasData ?  ListView.builder(
           itemCount: snapshot.data.documents.length,
             itemBuilder: (context, index){
+            print(chatRoomsStream.length);
+            print(snapshot.data.documents[index].data["chatroomId"].toString().replaceAll('_', ""));
+            // return  Container();
              return ChatRoomTile(
                snapshot.data.documents[index].data["chatroomId"]
-                   .toString().replaceAll("_", "")
-                   .replaceAll(Constants.myName, ""),
+                   .toString().replaceAll("_", ""),
                  snapshot.data.documents[index].data["chatroomId"]
              );
             }) : Container();
@@ -78,6 +80,7 @@ class ChatRoomTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
+        print("channelId $chatRoomId");
         Navigator.push(context, MaterialPageRoute(
             builder: (context) => ConversationScreen(chatRoomId)
         ));
